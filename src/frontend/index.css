@@ -1,0 +1,237 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== FONT FACE DECLARATIONS ===== */
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/assets/fonts/CabinetGrotesk-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque-Variable.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans-Variable.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+/* ===== DESIGN TOKENS: Navy Corporate + Amber Accent ===== */
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Core palette */
+    --background: 0.97 0.006 240;
+    --foreground: 0.15 0.02 250;
+
+    --card: 1 0 0;
+    --card-foreground: 0.15 0.02 250;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.15 0.02 250;
+
+    /* Navy blue primary */
+    --primary: 0.28 0.08 252;
+    --primary-foreground: 0.98 0 0;
+
+    /* Light silver secondary */
+    --secondary: 0.92 0.012 248;
+    --secondary-foreground: 0.28 0.08 252;
+
+    /* Muted */
+    --muted: 0.94 0.008 244;
+    --muted-foreground: 0.25 0.03 250;
+
+    /* Amber accent */
+    --accent: 0.82 0.16 68;
+    --accent-foreground: 0.18 0.025 250;
+
+    /* Destructive */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.016 248;
+    --input: 0.90 0.016 248;
+    --ring: 0.28 0.08 252;
+
+    /* Charts */
+    --chart-1: 0.28 0.08 252;
+    --chart-2: 0.82 0.16 68;
+    --chart-3: 0.55 0.15 252;
+    --chart-4: 0.60 0.14 200;
+    --chart-5: 0.70 0.12 140;
+
+    /* Sidebar */
+    --sidebar: 0.985 0 0;
+    --sidebar-foreground: 0.145 0 0;
+    --sidebar-primary: 0.205 0 0;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.97 0 0;
+    --sidebar-accent-foreground: 0.205 0 0;
+    --sidebar-border: 0.922 0 0;
+    --sidebar-ring: 0.708 0 0;
+
+    /* Custom brand tokens */
+    --navy-deep: 0.20 0.09 258;
+    --navy-mid: 0.28 0.08 252;
+    --navy-light: 0.38 0.07 248;
+    --amber: 0.82 0.16 68;
+    --amber-light: 0.88 0.14 72;
+    --surface-elevated: 1 0 0;
+    --surface-subtle: 0.96 0.008 244;
+
+    /* Section-specific colors */
+    --section-services-bg: 0.96 0.012 244;
+    --section-process-bg: 1 0 0;
+    --section-industries-bg: 0.94 0.018 160;
+    --section-testimonials-bg: 0.96 0.012 75;
+    --section-faq-bg: 0.95 0.015 290;
+    --section-contact-bg: 0.97 0.010 20;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 700;
+  }
+}
+
+/* ===== CUSTOM UTILITY CLASSES ===== */
+@layer utilities {
+  .text-navy-deep {
+    color: oklch(var(--navy-deep));
+  }
+  .text-navy-mid {
+    color: oklch(var(--navy-mid));
+  }
+  .text-amber-brand {
+    color: oklch(var(--amber));
+  }
+  .bg-navy-deep {
+    background-color: oklch(var(--navy-deep));
+  }
+  .bg-navy-mid {
+    background-color: oklch(var(--navy-mid));
+  }
+  .bg-amber-brand {
+    background-color: oklch(var(--amber));
+  }
+  .bg-surface-subtle {
+    background-color: oklch(var(--surface-subtle));
+  }
+  .bg-section-services {
+    background-color: oklch(var(--section-services-bg));
+  }
+  .bg-section-process {
+    background-color: oklch(var(--section-process-bg));
+  }
+  .bg-section-industries {
+    background-color: oklch(var(--section-industries-bg));
+  }
+  .bg-section-testimonials {
+    background-color: oklch(var(--section-testimonials-bg));
+  }
+  .bg-section-faq {
+    background-color: oklch(var(--section-faq-bg));
+  }
+  .bg-section-contact {
+    background-color: oklch(var(--section-contact-bg));
+  }
+  .border-amber-brand {
+    border-color: oklch(var(--amber));
+  }
+
+  .font-display {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+
+  .font-heading {
+    font-family: "Cabinet Grotesk", sans-serif;
+  }
+
+  .section-padding {
+    @apply py-16 md:py-24;
+  }
+
+  .container-site {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, oklch(var(--amber)) 0%, oklch(var(--amber-light)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Navy mesh background */
+  .navy-mesh {
+    background:
+      radial-gradient(ellipse at 20% 50%, oklch(var(--navy-light) / 0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, oklch(var(--amber) / 0.12) 0%, transparent 40%),
+      oklch(var(--navy-deep));
+  }
+
+  /* Card hover transition */
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  /* Animated underline */
+  .animate-underline {
+    position: relative;
+  }
+  .animate-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: oklch(var(--amber));
+    transition: width 0.3s ease;
+  }
+  .animate-underline:hover::after {
+    width: 100%;
+  }
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(var(--surface-subtle));
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(var(--navy-mid));
+  border-radius: 3px;
+}
+
+/* ===== COUNTER ANIMATION ===== */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.counter-animate {
+  animation: countUp 0.5s ease forwards;
+}
