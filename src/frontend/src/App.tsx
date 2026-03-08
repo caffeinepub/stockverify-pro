@@ -100,9 +100,7 @@ function StatCounter({
         {count}
         {suffix}
       </div>
-      <div className="text-sm md:text-base font-bold text-white/90">
-        {label}
-      </div>
+      <div className="text-sm md:text-base font-bold text-black">{label}</div>
     </div>
   );
 }
@@ -347,7 +345,7 @@ function Navbar() {
                 className={`text-sm font-bold font-heading animate-underline transition-colors duration-200 ${
                   scrolled
                     ? "text-navy-deep hover:text-amber-brand"
-                    : "text-white hover:text-amber-brand"
+                    : "text-black hover:text-amber-brand"
                 }`}
               >
                 {link.label}
@@ -372,7 +370,7 @@ function Navbar() {
             <button
               type="button"
               className={`md:hidden p-2 rounded-md transition-colors ${
-                scrolled ? "text-navy-deep" : "text-white"
+                scrolled ? "text-navy-deep" : "text-black"
               }`}
               onClick={() => setIsOpen(!isOpen)}
               aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -439,12 +437,13 @@ function HeroSection() {
       id="home"
       className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Background gradient */}
+      {/* Background gradient - transparent navy blue */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(135deg, oklch(0.20 0.09 258) 0%, oklch(0.28 0.08 252) 60%, oklch(0.20 0.09 258) 100%)",
+            "linear-gradient(135deg, rgba(10, 25, 70, 0.75) 0%, rgba(20, 40, 100, 0.65) 60%, rgba(10, 25, 70, 0.75) 100%)",
+          backgroundColor: "rgba(10, 25, 70, 0.7)",
         }}
       />
       {/* Decorative pattern */}
@@ -462,14 +461,14 @@ function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 border border-white/20"
-            style={{ backgroundColor: "oklch(0.82 0.16 68 / 0.2)" }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 border border-black/20"
+            style={{ backgroundColor: "rgba(255, 255, 255, 0.25)" }}
           >
             <span
               className="w-2 h-2 rounded-full animate-pulse"
               style={{ backgroundColor: "oklch(0.82 0.16 68)" }}
             />
-            <span className="text-sm font-bold font-heading text-white">
+            <span className="text-sm font-bold font-heading text-black">
               Pan India Inventory Audit Experts
             </span>
           </motion.div>
@@ -479,7 +478,7 @@ function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
-            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6"
+            className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black leading-tight mb-6"
           >
             Professional <span className="gradient-text">Inventory Audit</span>{" "}
             & Stock Verification
@@ -490,11 +489,11 @@ function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="text-lg md:text-xl text-white font-bold mb-10 max-w-2xl leading-relaxed"
+            className="text-lg md:text-xl text-black font-bold mb-10 max-w-2xl leading-relaxed"
           >
             Expert stock verification and barcode-based inventory audits across
             India.{" "}
-            <strong className="text-white">Accurate. Reliable. Fast.</strong>
+            <strong className="text-black">Accurate. Reliable. Fast.</strong>
           </motion.p>
 
           {/* CTAs */}
@@ -522,7 +521,7 @@ function HeroSection() {
               onClick={() => scrollTo("#services")}
               size="lg"
               variant="outline"
-              className="font-heading font-bold text-base px-8 h-12 border-white/40 text-white hover:bg-white/10 bg-white/5"
+              className="font-heading font-bold text-base px-8 h-12 border-black/40 text-black hover:bg-black/10 bg-black/5"
             >
               Our Services
             </Button>
@@ -533,9 +532,9 @@ function HeroSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 rounded-2xl border border-white/10"
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 rounded-2xl border border-black/10"
             style={{
-              backgroundColor: "oklch(0.20 0.09 258 / 0.5)",
+              backgroundColor: "rgba(255, 255, 255, 0.2)",
               backdropFilter: "blur(10px)",
             }}
           >
