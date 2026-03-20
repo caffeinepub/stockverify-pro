@@ -60,15 +60,15 @@
     --destructive-foreground: 0.985 0 0;
 
     --border: 0.88 0.016 248;
-    --input: 0.90 0.016 248;
+    --input: 0.9 0.016 248;
     --ring: 0.28 0.08 252;
 
     /* Charts */
     --chart-1: 0.28 0.08 252;
     --chart-2: 0.82 0.16 68;
     --chart-3: 0.55 0.15 252;
-    --chart-4: 0.60 0.14 200;
-    --chart-5: 0.70 0.12 140;
+    --chart-4: 0.6 0.14 200;
+    --chart-5: 0.7 0.12 140;
 
     /* Sidebar */
     --sidebar: 0.985 0 0;
@@ -81,7 +81,7 @@
     --sidebar-ring: 0.708 0 0;
 
     /* Custom brand tokens */
-    --navy-deep: 0.20 0.09 258;
+    --navy-deep: 0.2 0.09 258;
     --navy-mid: 0.28 0.08 252;
     --navy-light: 0.38 0.07 248;
     --amber: 0.82 0.16 68;
@@ -95,7 +95,7 @@
     --section-industries-bg: 0.94 0.018 160;
     --section-testimonials-bg: 0.96 0.012 75;
     --section-faq-bg: 0.95 0.015 290;
-    --section-contact-bg: 0.97 0.010 20;
+    --section-contact-bg: 0.97 0.01 20;
   }
 
   * {
@@ -176,7 +176,11 @@
 
   /* Gradient text */
   .gradient-text {
-    background: linear-gradient(135deg, oklch(var(--amber)) 0%, oklch(var(--amber-light)) 100%);
+    background: linear-gradient(
+      135deg,
+      oklch(var(--amber)) 0%,
+      oklch(var(--amber-light)) 100%
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -184,10 +188,16 @@
 
   /* Navy mesh background */
   .navy-mesh {
-    background:
-      radial-gradient(ellipse at 20% 50%, oklch(var(--navy-light) / 0.3) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, oklch(var(--amber) / 0.12) 0%, transparent 40%),
-      oklch(var(--navy-deep));
+    background: radial-gradient(
+        ellipse at 20% 50%,
+        oklch(var(--navy-light) / 0.3) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at 80% 20%,
+        oklch(var(--amber) / 0.12) 0%,
+        transparent 40%
+      ), oklch(var(--navy-deep));
   }
 
   /* Card hover transition */
@@ -200,7 +210,7 @@
     position: relative;
   }
   .animate-underline::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -2px;
     left: 0;
@@ -228,8 +238,14 @@
 
 /* ===== COUNTER ANIMATION ===== */
 @keyframes countUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .counter-animate {

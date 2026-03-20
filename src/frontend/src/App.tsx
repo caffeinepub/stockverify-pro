@@ -48,6 +48,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { SiFacebook, SiInstagram, SiLinkedin } from "react-icons/si";
 import { toast } from "sonner";
+import InvoiceGenerator from "./components/InvoiceGenerator";
 import { useActor } from "./hooks/useActor";
 
 // ===== COUNTER HOOK =====
@@ -287,7 +288,7 @@ const faqs = [
 ];
 
 // ===== NAVBAR =====
-function Navbar() {
+function Navbar({ onOpenInvoice }: { onOpenInvoice: () => void }) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -355,6 +356,14 @@ function Navbar() {
 
           {/* CTA + Hamburger */}
           <div className="flex items-center gap-3">
+            <Button
+              data-ocid="nav.invoice.secondary_button"
+              onClick={onOpenInvoice}
+              variant="outline"
+              className="hidden md:flex font-heading font-bold text-sm px-4 py-2 h-auto border-navy-mid text-navy-deep hover:bg-slate-50"
+            >
+              Invoice Tool
+            </Button>
             <Button
               data-ocid="nav.quote.primary_button"
               onClick={() => handleNavClick("#contact")}
@@ -1120,7 +1129,8 @@ function ContactSection() {
     {
       icon: <MapPin className="w-5 h-5" />,
       label: "Address",
-      value: "Mumbai, Maharashtra, India — 400001",
+      value:
+        "Hari Om Nagar, C-204, Near Birmole Hospital, Panvel - Navi Mumbai, Pin: 410206",
     },
   ];
 
@@ -1568,9 +1578,9 @@ function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-amber-brand flex-shrink-0 mt-0.5" />
                 <span className="text-white font-bold text-sm">
-                  Mumbai, Maharashtra,
+                  Hari Om Nagar, C-204, Near Birmole Hospital,
                   <br />
-                  India — 400001
+                  Panvel - Navi Mumbai, Pin: 410206
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -1607,10 +1617,32 @@ function Footer() {
 
 // ===== MAIN APP =====
 export default function App() {
+  const [showInvoice, setShowInvoice] = useState(false);
+
+  if (showInvoice) {
+    return (
+      <>
+        <Toaster position="top-right" richColors />
+        <div className="no-print fixed top-3 right-4 z-50">
+          <Button
+            data-ocid="invoice_app.back_to_site.button"
+            variant="outline"
+            size="sm"
+            onClick={() => setShowInvoice(false)}
+            className="gap-1.5 text-xs shadow-md bg-white"
+          >
+            ← Back to Website
+          </Button>
+        </div>
+        <InvoiceGenerator />
+      </>
+    );
+  }
+
   return (
     <div className="min-h-screen">
       <Toaster position="top-right" richColors />
-      <Navbar />
+      <Navbar onOpenInvoice={() => setShowInvoice(true)} />
       <main>
         <HeroSection />
         <ServicesSection />

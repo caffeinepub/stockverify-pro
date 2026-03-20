@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NSS Consultancy — Professional Inventory Audit &amp; Stock Verification</title>
+  <meta name="description" content="Expert stock verification and barcode-based inventory audits across India. Accurate. Reliable. Fast." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Bricolage+Grotesque:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;background:#f5f6fa;color:#1a1f3c;line-height:1.6}
+    img{max-width:100%;height:auto;display:block}
+    a{text-decoration:none}
+    button{cursor:pointer;border:none;background:none;font-family:inherit}
+    h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;font-weight:800}
+    :root{
+      --navy:#0f1e4a;
+      --navy-mid:#1a2d6e;
+      --amber:#f0a500;
+      --amber-light:#f5c23e;
+      --text-dark:#1a1f3c;
+      --text-mid:#3b4569;
+      --surface:#f5f6fa;
+      --border:#e0e3ef;
+    }
+    .container{max-width:1280px;margin:0 auto;padding:0 1.5rem}
+    .section-padding{padding:5rem 0}
+    @media(max-width:768px){.section-padding{padding:3rem 0}}
+    .gradient-text{background:linear-gradient(135deg,var(--amber) 0%,var(--amber-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+    /* NAVBAR */
+    #navbar{position:fixed;top:0;left:0;right:0;z-index:100;transition:all .3s;background:transparent}
+    #navbar.scrolled{background:rgba(255,255,255,.97);box-shadow:0 2px 20px rgba(0,0,0,.08);backdrop-filter:blur(10px)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+    .nav-logo{height:44px;width:auto}
+    .nav-logo-text{display:none;font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;font-weight:800;color:var(--amber)}
+    .nav-links{display:flex;gap:2rem;align-items:center}
+    .nav-links a{font-size:.875rem;font-weight:700;color:#fff;transition:color .2s;position:relative}
+    .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--amber);transition:width .3s}
+    .nav-links a:hover::after{width:100%}
+    #navbar.scrolled .nav-links a{color:var(--navy)}
+    .nav-links a:hover{color:var(--amber)}
+    .btn-quote{background:var(--amber);color:var(--navy);font-weight:800;font-size:.875rem;padding:.6rem 1.4rem;border-radius:8px;display:inline-flex;align-items:center;gap:6px;transition:background .2s,transform .1s}
+    .btn-quote:hover{background:var(--amber-light);transform:translateY(-1px)}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+    .hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:background .2s}
+    #navbar.scrolled .hamburger span{background:var(--navy)}
+    #mobile-menu{display:none;background:#fff;border-top:1px solid var(--border);padding:1rem 1.5rem;flex-direction:column;gap:.25rem;box-shadow:0 8px 20px rgba(0,0,0,.08)}
+    #mobile-menu.open{display:flex}
+    #mobile-menu a{color:var(--navy);font-weight:700;padding:.75rem;border-radius:6px;display:flex;align-items:center;justify-content:space-between;transition:background .15s}
+    #mobile-menu a:hover{background:var(--surface)}
+    @media(max-width:768px){.nav-links,.btn-quote{display:none}.hamburger{display:flex}}
+
+    /* HERO */
+    #home{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:#0a1946}
+    .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,25,70,.85) 0%,rgba(20,40,100,.75) 60%,rgba(10,25,70,.85) 100%);z-index:1}
+    .hero-pattern{position:absolute;inset:0;opacity:.07;z-index:2;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+    .hero-content{position:relative;z-index:3;padding-top:7rem;padding-bottom:5rem}
+    .hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;border-radius:100px;border:1px solid rgba(0,0,0,.2);background:rgba(255,255,255,.2);margin-bottom:1.5rem}
+    .hero-badge-dot{width:8px;height:8px;border-radius:50%;background:var(--amber);animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    .hero-badge span{font-size:.875rem;font-weight:700;color:#000}
+    .hero-h1{font-size:clamp(2.2rem,6vw,4.5rem);font-weight:800;color:#000;line-height:1.1;margin-bottom:1.5rem}
+    .hero-sub{font-size:1.125rem;color:#000;font-weight:700;max-width:600px;margin-bottom:2.5rem;line-height:1.7}
+    .hero-ctas{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:3.5rem}
+    .btn-primary{background:var(--amber);color:var(--navy);font-weight:800;font-size:1rem;padding:.85rem 2rem;border-radius:8px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(240,165,0,.3);transition:background .2s,transform .1s}
+    .btn-primary:hover{background:var(--amber-light);transform:translateY(-2px)}
+    .btn-outline{background:rgba(0,0,0,.07);color:#000;font-weight:800;font-size:1rem;padding:.85rem 2rem;border-radius:8px;border:1.5px solid rgba(0,0,0,.35);display:inline-flex;align-items:center;gap:8px;transition:background .2s}
+    .btn-outline:hover{background:rgba(0,0,0,.12)}
+    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;padding:1.5rem;border-radius:16px;border:1px solid rgba(0,0,0,.1);background:rgba(255,255,255,.18);backdrop-filter:blur(10px);max-width:700px}
+    @media(max-width:640px){.hero-stats{grid-template-columns:repeat(2,1fr)}}
+    .stat-item{text-align:center}
+    .stat-number{font-family:'Bricolage Grotesque',sans-serif;font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,var(--amber) 0%,var(--amber-light) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;margin-bottom:.25rem}
+    .stat-label{font-size:.8rem;font-weight:700;color:#000}
+
+    /* SERVICES */
+    #services{background:#f0f1f7}
+    .section-tag{display:inline-block;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:.75rem}
+    .section-title{font-size:clamp(1.8rem,4vw,3rem);font-weight:800;margin-bottom:1rem}
+    .section-sub{font-size:1.05rem;font-weight:700;max-width:600px;margin:0 auto}
+    .text-center{text-align:center}
+    .mb-14{margin-bottom:3.5rem}
+    .services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+    @media(max-width:1024px){.services-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.services-grid{grid-template-columns:1fr}}
+    .service-card{background:#fff;border:1px solid #e0e3ef;border-radius:14px;padding:1.5rem;transition:transform .25s,box-shadow .25s}
+    .service-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(26,31,60,.12)}
+    .service-icon{width:56px;height:56px;border-radius:12px;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+    .service-icon svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .service-title{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.05rem;font-weight:800;color:var(--navy);margin-bottom:.5rem}
+    .service-desc{font-size:.875rem;color:var(--text-mid);line-height:1.65;font-weight:700}
+
+    /* WHY US */
+    #about{background:radial-gradient(ellipse at 20% 50%,rgba(56,74,130,.3) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(240,165,0,.12) 0%,transparent 40%),var(--navy);color:#fff}
+    .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    @media(max-width:768px){.why-grid{grid-template-columns:1fr;gap:2.5rem}}
+    .why-tag{color:var(--amber);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;margin-bottom:.75rem;display:block}
+    .why-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;color:#fff;margin-bottom:1.25rem;line-height:1.2}
+    .why-desc{color:#fff;font-size:1.05rem;font-weight:700;margin-bottom:2rem;line-height:1.7}
+    .check-list{list-style:none;display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem}
+    .check-list li{display:flex;align-items:center;gap:.75rem;color:#fff;font-weight:700}
+    .check-list li svg{width:20px;height:20px;color:var(--amber);flex-shrink:0;stroke:var(--amber);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .why-cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .why-card{background:rgba(15,30,74,.5);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:1.25rem;transition:border-color .25s}
+    .why-card:hover{border-color:rgba(240,165,0,.5)}
+    .why-card-icon{width:48px;height:48px;border-radius:10px;background:rgba(240,165,0,.15);display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+    .why-card-icon svg{width:24px;height:24px;stroke:var(--amber);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .why-card h3{font-size:.95rem;font-weight:800;color:#fff;margin-bottom:.4rem}
+    .why-card p{font-size:.825rem;color:rgba(255,255,255,.85);line-height:1.6;font-weight:700}
+
+    /* PROCESS */
+    #process{background:#fff}
+    .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    @media(max-width:900px){.process-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:580px){.process-grid{grid-template-columns:1fr}}
+    .process-card{border:1px solid var(--border);border-radius:14px;padding:1.5rem;position:relative;transition:border-color .25s,box-shadow .25s}
+    .process-card:hover{border-color:rgba(240,165,0,.4);box-shadow:0 8px 28px rgba(0,0,0,.08)}
+    .process-num-bg{position:absolute;top:1rem;right:1rem;font-family:'Bricolage Grotesque',sans-serif;font-size:3.5rem;font-weight:900;color:var(--navy);opacity:.04;line-height:1}
+    .process-badge{width:40px;height:40px;border-radius:10px;background:var(--navy);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:.8rem;margin-bottom:1rem}
+    .process-card h3{font-size:1rem;font-weight:800;color:#1a2040;margin-bottom:.5rem}
+    .process-card p{font-size:.875rem;color:var(--text-mid);line-height:1.65;font-weight:700}
+
+    /* INDUSTRIES */
+    #industries{background:#e8f5f0}
+    .industries-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+    @media(max-width:900px){.industries-grid{grid-template-columns:repeat(2,1fr)}}
+    .industry-card{display:flex;flex-direction:column;align-items:center;gap:.75rem;padding:1.5rem 1rem;border-radius:14px;background:#f5fdf9;border:1px solid #c5e8d8;transition:box-shadow .25s,transform .2s}
+    .industry-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,100,60,.1)}
+    .industry-icon{width:56px;height:56px;border-radius:12px;background:var(--navy);display:flex;align-items:center;justify-content:center}
+    .industry-icon svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .industry-name{font-size:.9rem;font-weight:800;color:#1a3530;text-align:center}
+
+    /* STATS BANNER */
+    .stats-banner{background:radial-gradient(ellipse at 20% 50%,rgba(56,74,130,.3) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(240,165,0,.12) 0%,transparent 40%),var(--navy);padding:4rem 0}
+    .stats-banner-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+    @media(max-width:640px){.stats-banner-grid{grid-template-columns:repeat(2,1fr)}}
+
+    /* TESTIMONIALS */
+    #testimonials{background:#fdf8ed}
+    .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    @media(max-width:900px){.testimonials-grid{grid-template-columns:1fr}}
+    .testimonial-card{background:#fffcf3;border:1px solid #f0d98a;border-radius:14px;padding:1.5rem;display:flex;flex-direction:column;transition:box-shadow .25s}
+    .testimonial-card:hover{box-shadow:0 8px 24px rgba(200,140,0,.12)}
+    .stars{display:flex;gap:3px;margin-bottom:1rem}
+    .stars svg{width:16px;height:16px;fill:#d4a017;stroke:#d4a017;stroke-width:1}
+    .testimonial-quote{font-size:.875rem;color:#5a4010;line-height:1.7;font-weight:700;flex:1;margin-bottom:1.25rem}
+    .testimonial-author{display:flex;align-items:center;gap:.75rem}
+    .author-avatar{width:40px;height:40px;border-radius:50%;background:#a07828;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:.8rem;flex-shrink:0}
+    .author-name{font-size:.875rem;font-weight:800;color:#3a2808}
+    .author-role{font-size:.75rem;color:#8a6520;font-weight:700}
+
+    /* FAQ */
+    #faq{background:#f2f0f9}
+    .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:.75rem}
+    .faq-item{background:#faf9ff;border:1px solid #c8c2e8;border-radius:12px;overflow:hidden}
+    .faq-question{width:100%;text-align:left;padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:.95rem;color:#22104a;background:none;border:none;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:background .15s}
+    .faq-question:hover{background:rgba(200,194,232,.2)}
+    .faq-question svg{width:18px;height:18px;flex-shrink:0;stroke:#22104a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s}
+    .faq-item.open .faq-question svg{transform:rotate(180deg)}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+    .faq-item.open .faq-answer{max-height:400px}
+    .faq-answer-inner{padding:0 1.5rem 1.25rem;font-size:.875rem;color:#3a2070;line-height:1.75;font-weight:700}
+
+    /* CONTACT */
+    #contact{background:#fdf5f2}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+    @media(max-width:768px){.contact-grid{grid-template-columns:1fr;gap:2.5rem}}
+    .contact-info-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.25rem}
+    .contact-icon{width:40px;height:40px;border-radius:10px;background:#c1441c;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .contact-icon svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .contact-info-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#9e5840;margin-bottom:2px}
+    .contact-info-value{font-size:.95rem;font-weight:700;color:#3a1808}
+    .why-contact-box{background:#fce8e0;border:1px solid #f0c0a8;border-radius:12px;padding:1.5rem;margin-top:1.5rem}
+    .why-contact-box h4{font-size:1rem;font-weight:800;color:#3a1808;margin-bottom:1rem}
+    .why-contact-list{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+    .why-contact-list li{display:flex;align-items:center;gap:.75rem}
+    .why-contact-list li svg{width:16px;height:16px;stroke:#c1441c;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+    .why-contact-list li span{font-size:.875rem;font-weight:700;color:#5a2818}
+    .contact-form-box{background:#fffaf8;border:1px solid #f0c0a8;border-radius:16px;padding:2rem;box-shadow:0 2px 10px rgba(200,100,60,.05)}
+    .contact-form-box h3{font-size:1.2rem;font-weight:800;color:#3a1808;margin-bottom:1.5rem}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:0}
+    @media(max-width:500px){.form-row{grid-template-columns:1fr}}
+    .form-group{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+    .form-label{font-size:.8rem;font-weight:800;color:#5a2818;text-transform:uppercase;letter-spacing:.06em}
+    .form-input,.form-textarea{border:1.5px solid #e8c0b0;border-radius:8px;padding:.7rem .9rem;font-family:'Plus Jakarta Sans',sans-serif;font-size:.9rem;font-weight:600;color:#3a1808;background:#fff;outline:none;transition:border-color .2s,box-shadow .2s;width:100%}
+    .form-input:focus,.form-textarea:focus{border-color:#c1441c;box-shadow:0 0 0 3px rgba(193,68,28,.12)}
+    .form-textarea{resize:none;min-height:100px}
+    .btn-submit{width:100%;background:#a03010;color:#fff;font-weight:800;font-size:1rem;padding:.9rem 1.5rem;border-radius:8px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;font-family:'Plus Jakarta Sans',sans-serif;transition:background .2s,transform .1s;margin-top:.5rem}
+    .btn-submit:hover{background:#c03818;transform:translateY(-1px)}
+    .form-success{display:none;background:#e8f5e9;border:1px solid #66bb6a;border-radius:8px;padding:1rem;margin-bottom:1rem;color:#1b5e20;font-size:.875rem;font-weight:700;align-items:center;gap:.5rem}
+    .form-success svg{width:18px;height:18px;stroke:#388e3c;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+    .form-success.show{display:flex}
+
+    /* FOOTER */
+    footer{background:radial-gradient(ellipse at 20% 50%,rgba(56,74,130,.3) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(240,165,0,.12) 0%,transparent 40%),var(--navy);color:#fff}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.2fr;gap:2.5rem;padding:4rem 0 2rem}
+    @media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:580px){.footer-grid{grid-template-columns:1fr}}
+    .footer-logo{height:40px;width:auto;margin-bottom:1rem;filter:brightness(0) invert(1)}
+    .footer-logo-text{font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;font-weight:800;color:var(--amber);margin-bottom:1rem;display:none}
+    .footer-desc{font-size:.875rem;color:#fff;line-height:1.7;font-weight:700;margin-bottom:1.25rem}
+    .footer-socials{display:flex;gap:.6rem}
+    .social-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;color:#fff;font-size:.75rem;font-weight:800;text-decoration:none;transition:border-color .2s,color .2s}
+    .social-btn:hover{border-color:var(--amber);color:var(--amber)}
+    .footer-heading{font-size:.75rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#fff;margin-bottom:1.25rem}
+    .footer-links{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+    .footer-links a{color:#fff;font-size:.875rem;font-weight:700;display:flex;align-items:center;gap:5px;transition:color .2s}
+    .footer-links a:hover{color:var(--amber)}
+    .footer-contact-item{display:flex;align-items:flex-start;gap:.6rem;margin-bottom:1rem}
+    .footer-contact-item svg{width:16px;height:16px;stroke:var(--amber);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;margin-top:2px}
+    .footer-contact-item span{font-size:.875rem;color:#fff;font-weight:700}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding:1.5rem 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem}
+    .footer-bottom p{font-size:.875rem;color:#fff;font-weight:700}
+    .footer-bottom a{color:#fff;transition:color .2s}
+    .footer-bottom a:hover{color:var(--amber)}
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#home" onclick="smoothScroll('#home');return false;" style="display:flex;align-items:center;">
+        <img src="YOUR_LOGO_URL_HERE" alt="NSS Consultancy" class="nav-logo" onerror="this.style.display='none';document.querySelector('.nav-logo-text').style.display='block';" />
+        <span class="nav-logo-text">NSS Consultancy</span>
+      </a>
+      <div class="nav-links">
+        <a href="#home" onclick="smoothScroll('#home');return false;">Home</a>
+        <a href="#services" onclick="smoothScroll('#services');return false;">Services</a>
+        <a href="#about" onclick="smoothScroll('#about');return false;">About</a>
+        <a href="#process" onclick="smoothScroll('#process');return false;">Process</a>
+        <a href="#industries" onclick="smoothScroll('#industries');return false;">Industries</a>
+        <a href="#contact" onclick="smoothScroll('#contact');return false;">Contact</a>
+        <a href="#contact" onclick="smoothScroll('#contact');return false;" class="btn-quote">Get Free Quote &#8594;</a>
+      </div>
+      <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu">
+    <a href="#home" onclick="smoothScroll('#home');toggleMenu();return false;">Home &#8250;</a>
+    <a href="#services" onclick="smoothScroll('#services');toggleMenu();return false;">Services &#8250;</a>
+    <a href="#about" onclick="smoothScroll('#about');toggleMenu();return false;">About &#8250;</a>
+    <a href="#process" onclick="smoothScroll('#process');toggleMenu();return false;">Process &#8250;</a>
+    <a href="#industries" onclick="smoothScroll('#industries');toggleMenu();return false;">Industries &#8250;</a>
+    <a href="#contact" onclick="smoothScroll('#contact');toggleMenu();return false;">Contact &#8250;</a>
+    <a href="#contact" onclick="smoothScroll('#contact');toggleMenu();return false;" style="background:var(--amber);color:var(--navy);border-radius:8px;padding:.75rem;margin-top:.5rem;justify-content:center;">Get Free Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="container hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      <span>Pan India Inventory Audit Experts</span>
+    </div>
+    <h1 class="hero-h1">Professional <span class="gradient-text">Inventory Audit</span><br/>&#38; Stock Verification</h1>
+    <p class="hero-sub">Expert stock verification and barcode-based inventory audits across India. <strong>Accurate. Reliable. Fast.</strong></p>
+    <div class="hero-ctas">
+      <a href="#contact" onclick="smoothScroll('#contact');return false;" class="btn-primary">Get Free Audit Quote &#8594;</a>
+      <a href="#services" onclick="smoothScroll('#services');return false;" class="btn-outline">Our Services</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-number" data-target="1000" data-suffix="+">0+</div><div class="stat-label">Audits Completed</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="98" data-suffix="%">0%</div><div class="stat-label">Accuracy Rate</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="50" data-suffix="+">0+</div><div class="stat-label">Expert Staff</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="45" data-suffix="+">0+</div><div class="stat-label">Cities Covered</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section-padding">
+  <div class="container">
+    <div class="text-center mb-14">
+      <span class="section-tag" style="color:#1a2d6e;">What We Do</span>
+      <h2 class="section-title" style="color:var(--navy);">Our Core Services</h2>
+      <p class="section-sub" style="color:var(--text-mid);">Comprehensive inventory management solutions tailored to your business needs.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <div class="service-title">Showroom Audit</div>
+        <p class="service-desc">Comprehensive book vs physical reconciliation for accurate showroom inventory visibility.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <div class="service-title">Warehouse Audit</div>
+        <p class="service-desc">Full inventory and transaction audit at warehouse and CFA locations.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+        <div class="service-title">Fixed Asset Tagging</div>
+        <p class="service-desc">Barcode tagging and re-verification of all fixed assets for complete traceability.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="service-title">Compliance Audit</div>
+        <p class="service-desc">SOP, cash, and statutory compliance review to keep your operations fully aligned.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="5" height="5"/><rect x="16" y="3" width="5" height="5"/><rect x="3" y="16" width="5" height="5"/><path d="M21 16h-3a2 2 0 0 0-2 2v3"/><path d="M21 21v.01"/><path d="M12 7v3a2 2 0 0 1-2 2H7"/><path d="M3 12h.01"/><path d="M12 3h.01"/><path d="M12 16v.01"/><path d="M16 12h1"/><path d="M21 12v.01"/><path d="M12 21v-1"/></svg></div>
+        <div class="service-title">Barcode Implementation</div>
+        <p class="service-desc">End-to-end barcode scanning solutions from hardware setup to software integration.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+        <div class="service-title">Dispatch Audit</div>
+        <p class="service-desc">Auditing dispatches to ensure correct SKU and quantity are delivered every time.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg></div>
+        <div class="service-title">Stock Reconciliation</div>
+        <p class="service-desc">Reconciliation across C&#38;F, franchise, and distribution network locations.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <div class="service-title">Manpower Support</div>
+        <p class="service-desc">Contracted resources deployed at outlets and warehouses for seamless operations.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section id="about" class="section-padding">
+  <div class="container">
+    <div class="why-grid">
+      <div>
+        <span class="why-tag">Why Us</span>
+        <h2 class="why-title">Why Choose <span class="gradient-text">NSS Consultancy?</span></h2>
+        <p class="why-desc">We combine deep domain expertise with cutting-edge technology to deliver inventory audit services that set the standard for accuracy and reliability across India.</p>
+        <ul class="check-list">
+          <li><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Unbiased third-party verification</li>
+          <li><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Real-time data capture</li>
+          <li><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Detailed discrepancy reports</li>
+          <li><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> Dedicated client support</li>
+        </ul>
+        <a href="#contact" onclick="smoothScroll('#contact');return false;" class="btn-primary" style="display:inline-flex;">Get Started Today &#8594;</a>
+      </div>
+      <div class="why-cards-grid">
+        <div class="why-card">
+          <div class="why-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <h3>Pan India Service</h3><p>Nationwide presence with consistent quality across 45+ cities.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="2" x2="9" y2="4"/><line x1="15" y1="2" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="22"/><line x1="15" y1="20" x2="15" y2="22"/><line x1="20" y1="9" x2="22" y2="9"/><line x1="20" y1="14" x2="22" y2="14"/><line x1="2" y1="9" x2="4" y2="9"/><line x1="2" y1="14" x2="4" y2="14"/></svg></div>
+          <h3>In-House Technology</h3><p>Proprietary software for real-time accurate data capture and reporting.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+          <h3>Expert Auditors</h3><p>Certified professionals with deep domain experience across multiple industries.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <h3>Fast Turnaround</h3><p>48-hour average turnaround with detailed discrepancy reports.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="section-padding">
+  <div class="container">
+    <div class="text-center mb-14">
+      <span class="section-tag" style="color:#2d7a55;">How We Work</span>
+      <h2 class="section-title" style="color:#1a3530;">Our Audit Process</h2>
+      <p class="section-sub" style="color:#3a6055;margin:0 auto;">A structured, transparent six-step methodology for reliable inventory audits.</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-card"><div class="process-num-bg">01</div><div class="process-badge">01</div><h3>Initial Assessment</h3><p>Evaluate current inventory management systems and identify audit scope.</p></div>
+      <div class="process-card"><div class="process-num-bg">02</div><div class="process-badge">02</div><h3>Planning</h3><p>Develop detailed audit strategy and timeline based on business requirements.</p></div>
+      <div class="process-card"><div class="process-num-bg">03</div><div class="process-badge">03</div><h3>Physical Count</h3><p>Systematic counting and verification of all inventory items using barcode technology.</p></div>
+      <div class="process-card"><div class="process-num-bg">04</div><div class="process-badge">04</div><h3>Data Analysis</h3><p>Compare physical count with system records and identify discrepancies.</p></div>
+      <div class="process-card"><div class="process-num-bg">05</div><div class="process-badge">05</div><h3>Reporting</h3><p>Detailed documentation of findings, discrepancies, and actionable recommendations.</p></div>
+      <div class="process-card"><div class="process-num-bg">06</div><div class="process-badge">06</div><h3>Implementation</h3><p>Execute recommended improvements and establish ongoing monitoring systems.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries" class="section-padding">
+  <div class="container">
+    <div class="text-center mb-14">
+      <span class="section-tag" style="color:#2d7055;">Industries</span>
+      <h2 class="section-title" style="color:#1a3028;">Industries We Serve</h2>
+      <p class="section-sub" style="color:#3a5545;margin:0 auto;">Deep expertise across diverse sectors for specialized inventory solutions.</p>
+    </div>
+    <div class="industries-grid">
+      <div class="industry-card"><div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg></div><span class="industry-name">Apparel</span></div>
+      <div class="industry-card"><div class="industry-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><span class="industry-name">Electronics</span></div>
+      <div class="industry-card"><div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg></div><span class="industry-name">Pharmaceuticals</span></div>
+      <div class="industry-card"><div class="industry-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div><span class="industry-name">FMCG / Retail</span></div>
+      <div class="industry-card"><div class="industry-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><span class="industry-name">Jewelry</span></div>
+      <div class="industry-card"><div class="industry-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div><span class="industry-name">Manufacturing</span></div>
+      <div class="industry-card"><div class="industry-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><span class="industry-name">Warehousing</span></div>
+      <div class="industry-card"><div class="industry-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><span class="industry-name">Cosmetics</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BANNER -->
+<div class="stats-banner">
+  <div class="container">
+    <div class="stats-banner-grid">
+      <div class="stat-item"><div class="stat-number" data-target="1000" data-suffix="+">0+</div><div class="stat-label">Audits Completed</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="98" data-suffix="%">0%</div><div class="stat-label">Accuracy Rate</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="50" data-suffix="+">0+</div><div class="stat-label">Expert Staff</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="45" data-suffix="+">0+</div><div class="stat-label">Cities Covered</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="section-padding">
+  <div class="container">
+    <div class="text-center mb-14">
+      <span class="section-tag" style="color:#a07828;">Client Stories</span>
+      <h2 class="section-title" style="color:#3a2808;">What Our Clients Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p class="testimonial-quote"></p>
+        <div class="testimonial-author"><div class="author-avatar">RM</div><div><div class="author-name">Rajiv M.</div><div class="author-role">Operations Head</div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p class="testimonial-quote"></p>
+        <div class="testimonial-author"><div class="author-avatar">PS</div><div><div class="author-name">Priya S.</div><div class="author-role">Store Manager</div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <p class="testimonial-quote"></p>
+        <div class="testimonial-author"><div class="author-avatar">AK</div><div><div class="author-name">Arun K.</div><div class="author-role">Supply Chain Director</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section-padding">
+  <div class="container">
+    <div class="text-center mb-14">
+      <span class="section-tag" style="color:#6040c0;">FAQ</span>
+      <h2 class="section-title" style="color:#22104a;">Frequently Asked Questions</h2>
+      <p class="section-sub" style="color:#4030a0;margin:0 auto;">Everything you need to know about our inventory audit services.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">What is a third-party stock audit? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">A third-party stock audit is an independent verification of your physical inventory conducted by an external specialist. Unlike internal audits, our auditors have no vested interests in your operations, ensuring unbiased and accurate reporting. This helps uncover discrepancies, prevent pilferage, and provide honest stock data you can rely on.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">How long does an inventory audit take? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">The duration depends on the size and complexity of your inventory. A typical retail showroom audit takes 1–2 days, while large warehouse audits may take 3–5 days. We aim for 48-hour turnaround on final reports after physical count completion.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Do you provide Pan India services? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">Yes, we operate across 45+ cities in India with dedicated regional teams. Our standardized processes and proprietary technology ensure consistent audit quality regardless of location. We serve clients from metro cities to tier-2 and tier-3 towns.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">What technology do you use for audits? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">We use our proprietary barcode scanning software combined with handheld scanners and mobile devices. Our system integrates with most ERP and POS platforms for seamless data comparison. We also offer RFID-based solutions for clients requiring faster scanning of large volumes.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">How do you handle discrepancies found during audit? <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="faq-answer"><div class="faq-answer-inner">All discrepancies are documented in real-time and categorized (excess, shortage, damaged, misplaced). Our final report includes a root-cause analysis and actionable recommendations. We follow up with clients to help implement corrective measures and prevent recurrence.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section-padding">
+  <div class="container">
+    <div class="text-center mb-14">
+      <span class="section-tag" style="color:#c04020;">Contact Us</span>
+      <h2 class="section-title" style="color:#3a1808;">Get a Free Audit Quote</h2>
+      <p class="section-sub" style="color:#6a3020;margin:0 auto;">Reach out today for a customized inventory audit solution for your business.</p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <h3 style="font-size:1.4rem;font-weight:800;color:#3a1808;margin-bottom:1.5rem;">Contact Information</h3>
+        <div class="contact-info-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.5 15.5v1.42"/></svg></div>
+          <div><div class="contact-info-label">Phone</div><div class="contact-info-value">+91-8080562020</div></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><div class="contact-info-label">Email</div><div class="contact-info-value">nssc.mumbai@gmail.com</div></div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="contact-info-label">Address</div><div class="contact-info-value">Hari Om Nagar, C-204, Near Birmole Hospital,<br/>Panvel - Navi Mumbai, Pin: 410206</div></div>
+        </div>
+        <div class="why-contact-box">
+          <h4>Why Contact Us?</h4>
+          <ul class="why-contact-list">
+            <li><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Get a free inventory audit consultation</span></li>
+            <li><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Customized quote within 24 hours</span></li>
+            <li><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Pan India service coverage</span></li>
+            <li><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span>Dedicated account manager assigned</span></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <div class="contact-form-box">
+          <h3>Send Us a Message</h3>
+          <div class="form-success" id="form-success">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Thank you! We'll contact you within 24 hours.
+          </div>
+          <form id="contact-form" onsubmit="handleFormSubmit(event)">
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Full Name *</label><input type="text" class="form-input" required /></div>
+              <div class="form-group"><label class="form-label">Company Name *</label><input type="text" class="form-input" required /></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Phone Number *</label><input type="tel" class="form-input" required /></div>
+              <div class="form-group"><label class="form-label">Email Address *</label><input type="email" class="form-input" required /></div>
+            </div>
+            <div class="form-group"><label class="form-label">Message / Requirements</label><textarea class="form-textarea" rows="4"></textarea></div>
+            <button type="submit" class="btn-submit">Submit Enquiry &#8594;</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="YOUR_LOGO_URL_HERE" alt="NSS Consultancy" class="footer-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='block';" />
+        <span class="footer-logo-text">NSS Consultancy</span>
+        <p class="footer-desc">NSS Consultancy — Expert inventory audit and stock verification services across India. Accurate, reliable, and fast.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-btn" aria-label="LinkedIn">in</a>
+          <a href="#" class="social-btn" aria-label="Facebook">f</a>
+          <a href="#" class="social-btn" aria-label="Instagram">ig</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#home" onclick="smoothScroll('#home');return false;">&#9656; Home</a></li>
+          <li><a href="#services" onclick="smoothScroll('#services');return false;">&#9656; Services</a></li>
+          <li><a href="#about" onclick="smoothScroll('#about');return false;">&#9656; About Us</a></li>
+          <li><a href="#process" onclick="smoothScroll('#process');return false;">&#9656; Our Process</a></li>
+          <li><a href="#industries" onclick="smoothScroll('#industries');return false;">&#9656; Industries</a></li>
+          <li><a href="#contact" onclick="smoothScroll('#contact');return false;">&#9656; Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Our Services</h4>
+        <ul class="footer-links">
+          <li><a href="#services" onclick="smoothScroll('#services');return false;">&#9656; Showroom Audit</a></li>
+          <li><a href="#services" onclick="smoothScroll('#services');return false;">&#9656; Warehouse Audit</a></li>
+          <li><a href="#services" onclick="smoothScroll('#services');return false;">&#9656; Fixed Asset Tagging</a></li>
+          <li><a href="#services" onclick="smoothScroll('#services');return false;">&#9656; Barcode Implementation</a></li>
+          <li><a href="#services" onclick="smoothScroll('#services');return false;">&#9656; Stock Reconciliation</a></li>
+          <li><a href="#services" onclick="smoothScroll('#services');return false;">&#9656; Dispatch Audit</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-heading">Contact Info</h4>
+        <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.1a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21.5 15.5v1.42"/></svg><span>+91-8080562020</span></div>
+        <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>nssc.mumbai@gmail.com</span></div>
+        <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Hari Om Nagar, C-204, Near Birmole Hospital, Panvel - Navi Mumbai, Pin: 410206</span></div>
+        <div class="footer-contact-item"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Pan India Coverage — 45+ Cities</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&#169; 2026 NSS Consultancy. All rights reserved.</p>
+      <p>Built with &#10084; for NSS Consultancy</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function smoothScroll(sel){var e=document.querySelector(sel);if(e)e.scrollIntoView({behavior:'smooth'})}
+  window.addEventListener('scroll',function(){var n=document.getElementById('navbar');n.classList.toggle('scrolled',window.scrollY>20)});
+  function toggleMenu(){document.getElementById('mobile-menu').classList.toggle('open')}
+  function toggleFaq(btn){var item=btn.closest('.faq-item');document.querySelectorAll('.faq-item').forEach(function(i){if(i!==item)i.classList.remove('open')});item.classList.toggle('open')}
+  var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting&&!e.target.dataset.animated){e.target.dataset.animated='1';animateCounter(e.target)}})},{threshold:.3});
+  document.querySelectorAll('[data-target]').forEach(function(el){obs.observe(el)});
+  function animateCounter(el){var target=parseInt(el.getAttribute('data-target')),suffix=el.getAttribute('data-suffix')||'',start=Date.now(),dur=2000;function tick(){var p=Math.min((Date.now()-start)/dur,1),eased=1-Math.pow(1-p,3);el.textContent=Math.floor(eased*target)+suffix;if(p<1)requestAnimationFrame(tick)}tick()}
+  function handleFormSubmit(e){
+    e.preventDefault();
+    var f=e.target;
+    var inputs=f.querySelectorAll('input');
+    var name=inputs[0].value,company=inputs[1].value,phone=inputs[2].value,email=inputs[3].value;
+    var msg=f.querySelector('textarea').value;
+    var sub=encodeURIComponent('Inventory Audit Enquiry from '+name+' ('+company+')');
+    var body=encodeURIComponent('Name: '+name+'\nCompany: '+company+'\nPhone: '+phone+'\nEmail: '+email+'\n\nMessage:\n'+msg);
+    window.location.href='mailto:nssc.mumbai@gmail.com?subject='+sub+'&body='+body;
+    var s=document.getElementById('form-success');s.classList.add('show');f.reset();
+    setTimeout(function(){s.classList.remove('show')},6000);
+  }
+</script>
+</body>
+</html>
